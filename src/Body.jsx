@@ -5,7 +5,7 @@ import Footer from './Footer.jsx';
 
 const Body = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col ">
       <NavBar />
       
       <main className="flex-grow">

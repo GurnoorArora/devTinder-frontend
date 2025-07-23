@@ -8,6 +8,7 @@ import { BASE_URL } from '../utils/constants';
 const Login = () => {
   const [emailId, setEmailId] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,6 +25,7 @@ const Login = () => {
       dispatch(addUser(response.data));
       return navigate('/'); // Redirect to profile page after login
     } catch (error) {
+      setError('Login failed. Please check your credentials.');
       console.error('Login failed:', error);
       // Handle error (e.g., show error message)
     }
@@ -50,8 +52,9 @@ const Login = () => {
             </div>
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" className="input input-bordered w-5/6" />
           </label>
-
           <div className="card-actions justify-center">
+            <p className="text-red-500">{error}</p>
+
             <button className="btn btn-primary w-full" onClick={handleLogin}>Login</button>
           </div>
         </div>
